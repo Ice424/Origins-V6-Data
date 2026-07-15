@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "origins": [
+    "origins:human",
+    "ice:baha",
+    "ice:crimson",
+    "ice:mbti",
+    "ice:robot",
+    "ice:theif"
+  ],
+  "gui_title": {
+    "choose_origin": "Choose your Origin"
+  }
+}
