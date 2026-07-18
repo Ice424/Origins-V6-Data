@@ -1,0 +1,1 @@
+execute as @e[type=#minecraft:minecarts,tag=!invisible_minecart] run function misode_imc:invisible_minecarts

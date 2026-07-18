@@ -1,0 +1,19 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "origins:region_apply",
+        "radius": 50,
+        "shape": "sphere",
+        "bientity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "id": "minecraft:haste",
+                "duration": 300,
+                "amplifier": 1,
+                "show_particles": false
+            }
+        }
+    },
+    "interval": 100,
+    "hidden": true
+}

@@ -1,0 +1,10 @@
+{
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins_js:js_entity_action",
+        "id": "open"
+    },
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

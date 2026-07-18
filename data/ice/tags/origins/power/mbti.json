@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "ice:mbti/change",
+        "ice:mbti/change_cooldown"
+    ]
+}

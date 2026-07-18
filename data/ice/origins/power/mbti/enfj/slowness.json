@@ -1,0 +1,17 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+
+ 
+            "type": "origins:apply_effect",
+            "effect": {
+                "id": "minecraft:slowness",
+                "duration": 300,
+                "amplifier": 4,
+                "show_particles": false
+            }
+    
+    },
+    "interval": 100,
+    "hidden": true
+}
