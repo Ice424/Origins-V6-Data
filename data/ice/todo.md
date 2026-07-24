@@ -1,5 +1,5 @@
 ~~ENFJ -  Beacon aura of haste II, speed II, strength II, I have slowness V~~
-ENFP - Speed III, jump boost II, hunger II
+~~ENFP - Speed III, jump boost II, hunger II~~
 ENTJ - Can zoom in with a crosshair and shoot a Piercing V, Power V, Punch V arrow (sniper sound on use), cant use any tool, 10 sec cooldown
 ENTP - Hero of the village, all neutral mobs become hostile
 ESFJ - food i craft will provide more nourishment, can only eat ‘crafted’ food

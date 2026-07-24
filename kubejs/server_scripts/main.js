@@ -3,8 +3,8 @@ const mbti = [
 ]
 const mbti_map = {
     "ENFJ": ["ice:mbti/enfj/haste", "ice:mbti/enfj/slowness", "ice:mbti/enfj/speed", "ice:mbti/enfj/strength"],
-    "ENFP": [],
-    "ENTJ": [],
+    "ENFP": ["ice:mbti/enfp/hunger", "ice:mbti/enfp/jump", "ice:mbti/enfp/speed"],
+    "ENTJ": ["ice:mbti/entj/give"],
     "ENTP": [],
     "ESFJ": [],
     "ESFP": [],
@@ -19,11 +19,10 @@ const mbti_map = {
     "ISTJ": [],
     "ISTP": []
 }
-var CurrentView = []
-var PreviousView = []
+
 
 const close = (player) => {
-    global.open_ui.pop(String(player.uuid))
+    delete global.open_ui[String(player.uuid)]
     var minecart = player.level.getEntities().find(e => {
         return e.type == "minecraft:chest_minecart" &&
             e.tags.contains(String(player.uuid))
@@ -31,36 +30,39 @@ const close = (player) => {
     )
     minecart.clearContent()
     minecart.kill()
-    CurrentView = []
-    PreviousView = []
 }
 
 PlayerEvents.inventoryClosed(e => {
 
     let player = e.getPlayer()
 
-    if (global.open_ui.includes(String(player.uuid))) {
+    if (String(player.uuid) in global.open_ui) {
         close(player)
     }
 })
 
 PlayerEvents.tick(e => {
     let player = e.getPlayer()
-    if (global.open_ui.includes(String(player.uuid))) {
+   
+
+    if (String(player.uuid) in global.open_ui) {
+        let CurrentView = global.open_ui[String(player.uuid)].CurrentView
+        let PreviousView = global.open_ui[String(player.uuid)].PreviousView
         var minecart = player.level.getEntities().find(e =>
             e.type == "minecraft:chest_minecart" &&
             e.tags.contains(String(player.uuid))
         )
-        CurrentView = minecart.getAllItems()
+        global.open_ui[String(player.uuid)].CurrentView = minecart.getAllItems()
+        let missingIndex = -1
         if (PreviousView.length != 0) {
             if (CurrentView.length != PreviousView.length) {
 
 
 
-                let missingIndex = PreviousView.findIndex(stack => stack.id === "minecraft:air");
+                missingIndex = PreviousView.findIndex(stack => stack.id === "minecraft:air");
                 let selected_mbti = ""
+                
                 if (missingIndex !== -1) {
-
                     selected_mbti = mbti[missingIndex];
                     close(player);
                 }
@@ -73,19 +75,24 @@ PlayerEvents.tick(e => {
                 powers = powers.filter(function (item) {
                     return item !== "ice:mbti/change_cooldown"
                 })
-
+                console.log(powers)
                 for (let i = 0; i < powers.length; i++) {
+                    console.log("Removed " + powers[i])
                     OriginsJS.revokePower(player, "mbti_revoke", powers[i])
                 }
                 
                 for (let i = 0; i < mbti_map[selected_mbti].length; i++) {
+                    console.log("Granted " + mbti_map[selected_mbti][i])
                     OriginsJS.grantPower(player, "mbti_grant", mbti_map[selected_mbti][i])
                 }
 
                 OriginsJS.startCooldown(player, "ice:mbti/change_cooldown")
-
+                
             }
         }
-        PreviousView = CurrentView
+        if (missingIndex == -1) {
+            global.open_ui[String(player.uuid)].PreviousView = CurrentView
+        }
+        
     }
 })
