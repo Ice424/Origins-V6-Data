@@ -7,7 +7,7 @@ const mbti_map = {
     "ENTJ": ["ice:mbti/entj/give", "ice:mbti/entj/tools"],
     "ENTP": ["ice:mbti/entp/attack", "ice:mbti/entp/hero"],
     "ESFJ": ["ice:mbti/esfj/cook", "ice:mbti/esfj/eat"],
-    "ESFP": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/music", "ice:mbti/esfp/blindness"],
+    "ESFP": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/effects_mode", "ice:mbti/esfp/blindness", "ice:mbti/esfp/start_effects"],
     "ESTJ": ["ice:mbti/estj/haste", "ice:mbti/estj/durability_drain_hit", "ice:mbti/estj/durability_drain_break"],
     "ESTP": ["ice:mbti/estp/damage_through_armour"],
     "INFJ": [],

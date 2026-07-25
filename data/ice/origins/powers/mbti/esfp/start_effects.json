@@ -1,0 +1,33 @@
+{
+    "type": "neoorigins:active_ability",
+    "cooldown_ticks": 10,
+    "entity_action": {
+        "type": "neoorigins:and",
+        "actions": [
+            {
+                "type": "neoorigins:toggle",
+                "power": "ice:mbti/esfp/effects_mode"
+            },
+            {
+                "type": "neoorigins:grant_power",
+                "power": "ice:mbti/esfp/stop_effects"
+            },
+            {
+                "type": "neoorigins:execute_command",
+                "command": "playsound ice:ice.caramelldansen.play master @a ~ ~ ~ 3.5 1"
+            },
+            {
+                "type": "neoorigins:execute_command",
+                "command": "effect give @e[distance=..50] minecraft:blindness"
+            },
+            {
+                "type": "neoorigins:execute_command",
+                "command": "effect give @e[distance=..50] minecraft:nausea"
+            },
+            {
+                "type": "neoorigins:revoke_power",
+                "power": "ice:mbti/esfp/start_effects"
+            }
+        ]
+    }
+}
