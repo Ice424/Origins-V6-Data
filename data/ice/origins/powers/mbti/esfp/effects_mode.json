@@ -1,0 +1,5 @@
+{
+  "type": "neoorigins:toggle",
+  "default": false,
+  "name": "Party Mode"
+}
