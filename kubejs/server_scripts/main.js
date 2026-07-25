@@ -2,22 +2,55 @@ const mbti = [
     "INTJ", "INTP", "ENTJ", "ENTP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "INFJ", "INFP", "ENFJ", "ENFP", "ISTP", "ISFP", "ESTP", "ESFP"
 ]
 const mbti_map = {
-    "ENFJ": ["ice:mbti/enfj/haste", "ice:mbti/enfj/slowness", "ice:mbti/enfj/speed", "ice:mbti/enfj/strength"],
-    "ENFP": ["ice:mbti/enfp/hunger", "ice:mbti/enfp/jump", "ice:mbti/enfp/speed"],
-    "ENTJ": ["ice:mbti/entj/give", "ice:mbti/entj/tools"],
-    "ENTP": ["ice:mbti/entp/attack", "ice:mbti/entp/hero"],
-    "ESFJ": ["ice:mbti/esfj/cook", "ice:mbti/esfj/eat"],
-    "ESFP": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/effects_mode", "ice:mbti/esfp/blindness", "ice:mbti/esfp/start_effects"],
-    "ESTJ": ["ice:mbti/estj/haste", "ice:mbti/estj/durability_drain_hit", "ice:mbti/estj/durability_drain_break"],
-    "ESTP": ["ice:mbti/estp/damage_through_armour"],
-    "INFJ": [],
-    "INFP": [],
-    "INTJ": [],
-    "INTP": [],
-    "ISFJ": [],
-    "ISFP": [],
-    "ISTJ": [],
-    "ISTP": []
+    "ENFJ": {
+        "grant": ["ice:mbti/enfj/haste", "ice:mbti/enfj/slowness", "ice:mbti/enfj/speed", "ice:mbti/enfj/strength"],
+        "revoke": ["ice:mbti/enfj/haste", "ice:mbti/enfj/slowness", "ice:mbti/enfj/speed", "ice:mbti/enfj/strength"],
+        "revoke_commands": []
+    },
+
+    "ENFP": {
+        "grant": ["ice:mbti/enfp/hunger", "ice:mbti/enfp/jump", "ice:mbti/enfp/speed"],
+        "revoke": ["ice:mbti/enfp/hunger", "ice:mbti/enfp/jump", "ice:mbti/enfp/speed"],
+        "revoke_commands": []
+    },
+    "ENTJ": {
+        "grant": ["ice:mbti/entj/give", "ice:mbti/entj/tools"],
+        "revoke": ["ice:mbti/entj/give", "ice:mbti/entj/tools", "ice:mbti/entj/fire"],
+        "revoke_commands": []
+    },
+    "ENTP": {
+        "grant": ["ice:mbti/entp/attack", "ice:mbti/entp/hero"],
+        "revoke": ["ice:mbti/entp/attack", "ice:mbti/entp/hero"],
+        "revoke_commands": []
+    },
+    "ESFJ": {
+        "grant": ["ice:mbti/esfj/cook", "ice:mbti/esfj/eat"],
+        "revoke": ["ice:mbti/esfj/cook", "ice:mbti/esfj/eat"],
+        "revoke_commands": []
+    },
+    "ESFP": {
+        "grant": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/effects_mode", "ice:mbti/esfp/blindness", "ice:mbti/esfp/start_effects"],
+        "revoke": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/effects_mode", "ice:mbti/esfp/blindness", "ice:mbti/esfp/start_effects", "ice:mbti/esfp/stop_effects"],
+        "revoke_commands": ["effect clear @e[distance=..50] minecraft:nausea", "effect clear @e[distance=..50] minecraft:blindness", "stopsound @a * ice:ice.caramelldansen.play"]
+    },
+    "ESTJ": {
+        "grant": ["ice:mbti/estj/haste", "ice:mbti/estj/durability_drain_hit", "ice:mbti/estj/durability_drain_break"],
+        "revoke": ["ice:mbti/estj/haste", "ice:mbti/estj/durability_drain_hit", "ice:mbti/estj/durability_drain_break"],
+        "revoke_commands": []
+    },
+    "ESTP": {
+        "grant": ["ice:mbti/estp/damage_through_armour"],
+        "revoke": ["ice:mbti/estp/damage_through_armour"],
+        "revoke_commands": []
+    },
+    "INFJ": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "INFP": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "INTJ": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "INTP": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "ISFJ": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "ISFP": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "ISTJ": { "grant": [], "revoke": [], "revoke_commands": [] },
+    "ISTP": { "grant": [], "revoke": [], "revoke_commands": [] }
 }
 
 var open_ui = {}
@@ -135,16 +168,20 @@ PlayerEvents.tick(e => {
 
                 if (pData.getAllKeys().contains(String(player.uuid))) {
                     let old_mbti = pData.getString(String(player.uuid))
-                    for (let i = 0; i < mbti_map[old_mbti].length; i++) {
-                        console.log("Removed " + mbti_map[old_mbti][i])
-                        server.runCommand(`power remove ${String(player.uuid)} ${mbti_map[old_mbti][i]}`)
+                    for (let i = 0; i < mbti_map[old_mbti]["revoke"].length; i++) {
+                        console.log("Removed " + mbti_map[old_mbti]["revoke"][i])
+                        server.runCommand(`power remove ${String(player.uuid)} ${mbti_map[old_mbti]["revoke"][i]}`)
+                    }
+                    for (let i = 0; i < mbti_map[old_mbti]["revoke_commands"].length; i++) {
+                        console.log("Removed " + mbti_map[old_mbti]["revoke_commands"][i])
+                        server.runCommandSilent(`execute as ${String(player.uuid)} at ${String(player.uuid)} run ${mbti_map[old_mbti]["revoke_commands"][i]}`)
                     }
                 }
 
 
-                for (let i = 0; i < mbti_map[selected_mbti].length; i++) {
-                    console.log("Granted " + mbti_map[selected_mbti][i])
-                    server.runCommand(`power grant ${String(player.uuid)} ${mbti_map[selected_mbti][i]}`)
+                for (let i = 0; i < mbti_map[selected_mbti]["grant"].length; i++) {
+                    console.log("Granted " + mbti_map[selected_mbti]["grant"][i])
+                    server.runCommand(`power grant ${String(player.uuid)} ${mbti_map[selected_mbti]["grant"][i]}`)
                 }
                 pData.putString(String(player.uuid), selected_mbti)
             }
