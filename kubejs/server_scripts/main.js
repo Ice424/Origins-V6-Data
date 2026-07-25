@@ -9,7 +9,7 @@ const mbti_map = {
     "ESFJ": ["ice:mbti/esfj/cook", "ice:mbti/esfj/eat"],
     "ESFP": ["ice:mbti/esfp/nausea", "ice:mbti/esfp/music", "ice:mbti/esfp/blindness"],
     "ESTJ": ["ice:mbti/estj/haste", "ice:mbti/estj/durability_drain_hit", "ice:mbti/estj/durability_drain_break"],
-    "ESTP": [],
+    "ESTP": ["ice:mbti/estp/damage_through_armour"],
     "INFJ": [],
     "INFP": [],
     "INTJ": [],
