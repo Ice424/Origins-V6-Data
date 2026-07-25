@@ -2,9 +2,9 @@
   "powers": [
   ],
   "icon": {
-    "item": "minecraft:slime_ball"
+    "item": "minecraft:clock"
   },
   "order": 0,
   "impact": 1,
-  "name": "King Crimson"
+  "name": "Rewind"
 }
