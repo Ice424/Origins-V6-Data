@@ -3,6 +3,6 @@
     "event": "attack",
     "entity_action": {
         "type": "neoorigins:target_action",
-        "action": {"type": "neoorigins:damage", "amount": 4.0}
+        "action": {"type": "neoorigins:damage", "amount": 6.0}
     }
 }

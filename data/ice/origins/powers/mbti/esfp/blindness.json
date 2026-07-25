@@ -10,7 +10,7 @@
             "effect": "minecraft:blindness",
             "duration": 300,
             "amplifier": 2,
-            "show_particles": false
+            "show_particles": true
         }
     },
     "interval": 100,

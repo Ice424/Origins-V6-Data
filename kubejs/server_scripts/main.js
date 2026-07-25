@@ -39,8 +39,8 @@ const mbti_map = {
         "revoke_commands": []
     },
     "ESTP": {
-        "grant": ["ice:mbti/estp/damage_through_armour"],
-        "revoke": ["ice:mbti/estp/damage_through_armour"],
+        "grant": ["ice:mbti/estp/damage_through_armour", "ice:mbti/estp/tools"],
+        "revoke": ["ice:mbti/estp/damage_through_armour", "ice:mbti/estp/tools"],
         "revoke_commands": []
     },
     "INFJ": { "grant": [], "revoke": [], "revoke_commands": [] },
