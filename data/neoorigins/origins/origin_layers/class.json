@@ -1,0 +1,9 @@
+{
+  "order": 1,
+  "replace": true,
+  "origins": [
+  ],
+  "gui_title": {
+    "choose_origin": "Choose your Origin"
+  }
+}

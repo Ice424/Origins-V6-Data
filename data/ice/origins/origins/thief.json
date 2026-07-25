@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "ice:thief/frail"
+  ],
+  "icon": {
+    "item": "minecraft:slime_ball"
+  },
+  "order": 0,
+  "impact": 1,
+  "name": "Kazuma"
+}

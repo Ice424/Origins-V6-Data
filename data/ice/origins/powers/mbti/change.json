@@ -1,0 +1,9 @@
+{
+    "type": "neoorigins:active_ability",
+    "entity_action": {
+        "type": "neoorigins:kubejs_callback",
+        "id": "ice:open_mbti_ui"
+    },
+    "cooldown_ticks": 120,
+    "name": "Change"
+}

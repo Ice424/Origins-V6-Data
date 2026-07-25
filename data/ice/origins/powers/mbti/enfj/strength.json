@@ -1,0 +1,18 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "neoorigins:area_of_effect",
+        "radius": 50,
+        "shape": "sphere",
+        "include_source": false,
+        "entity_action": {
+            "type": "neoorigins:apply_effect",
+            "effect": "minecraft:strength",
+            "duration": 300,
+            "amplifier": 1,
+            "show_particles": false
+        }
+    },
+    "interval": 100,
+    "hidden": true
+}

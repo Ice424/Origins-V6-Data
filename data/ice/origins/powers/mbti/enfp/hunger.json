@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effect": "minecraft:hunger",
+  "amplifier": 1,
+  "toggleable": false
+}

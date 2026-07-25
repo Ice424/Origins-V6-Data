@@ -1,0 +1,9 @@
+{
+    "type": "neoorigins:action_on_event",
+    "event": "entity_use",
+    "entity_action": {
+        "type":"neoorigins:execute_command",
+        "command": "say hi"
+    }
+    
+}

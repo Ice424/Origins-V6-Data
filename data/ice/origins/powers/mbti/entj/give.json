@@ -1,0 +1,22 @@
+{
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "give @s spyglass[item_name='{\"color\":\"dark_red\",\"text\":\"Sniper\"}',custom_data={sniper:{}}, enchantments={levels:{\"minecraft:knockback\":10}}] 1"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "ice:mbti/entj/fire",
+                "source": "fire"
+            }
+        ]
+    },
+    "cooldown": 3600,
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "name": "Sniper"
+}

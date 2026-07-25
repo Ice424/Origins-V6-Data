@@ -1,0 +1,10 @@
+{
+  "powers": [
+  ],
+  "icon": {
+    "item": "minecraft:slime_ball"
+  },
+  "order": 0,
+  "impact": 1,
+  "name": "King Crimson"
+}

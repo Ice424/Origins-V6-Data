@@ -1,0 +1,32 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:dried_kelp",
+        "minecraft:beef",
+        "minecraft:cooked_beef",
+        "minecraft:porkchop",
+        "minecraft:cooked_porkchop",
+        "minecraft:mutton",
+        "minecraft:cooked_mutton",
+        "minecraft:chicken",
+        "minecraft:cooked_chicken",
+        "minecraft:rabbit",
+        "minecraft:cooked_rabbit",
+        "minecraft:cod",
+        "minecraft:cooked_cod",
+        "minecraft:salmon",
+        "minecraft:cooked_salmon",
+        "minecraft:tropical_fish",
+        "minecraft:honey_bottle",
+        "minecraft:melon_slice",
+        "minecraft:apple",
+        "minecraft:sweet_berries",
+        "minecraft:glow_berries",
+        "minecraft:chorus_fruit",
+        "minecraft:carrot",
+        "minecraft:potato",
+        "minecraft:baked_potato",
+        "minecraft:beetroot"
+        
+    ]
+}
