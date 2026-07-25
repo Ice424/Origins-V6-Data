@@ -1,6 +1,6 @@
 {
     "type": "neoorigins:action_on_event",
-    "event": "hit_dealt",
+    "event": "attack",
     "entity_action": {
         "type": "neoorigins:target_action",
         "action": {"type": "neoorigins:damage", "amount": 4.0}
