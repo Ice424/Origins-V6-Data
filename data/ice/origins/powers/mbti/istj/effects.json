@@ -6,6 +6,10 @@
             "amplifier": 0
         },
         {
+            "effect": "minecraft:slowness",
+            "amplifier": 0
+        },
+        {
             "effect": "minecraft:absorption",
             "amplifier": 4,
             "comment": "//TODO make this not be infinite hearts"

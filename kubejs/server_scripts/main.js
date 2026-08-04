@@ -53,10 +53,10 @@ const mbti_map = {
         "revoke": ["ice:mbti/infp/regen", "ice:mbti/infp/ride", "ice:mbti/infp/tame", "ice:mbti/infp/target"],
         "revoke_commands": []
     },
-    "INTJ": { 
-        "grant": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"], 
-        "revoke": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"], 
-        "revoke_commands": [] 
+    "INTJ": {
+        "grant": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"],
+        "revoke": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"],
+        "revoke_commands": []
     },
     "INTP": {
         "grant": ["ice:mbti/intp/anvil", "ice:mbti/intp/damage", "ice:mbti/intp/enchanting", "ice:mbti/intp/phasing"],
@@ -78,10 +78,10 @@ const mbti_map = {
         "revoke": ["ice:mbti/istj/blast_prot", "ice:mbti/istj/effects", "ice:mbti/istj/fall_damage", "ice:mbti/istj/sink"],
         "revoke_commands": []
     },
-    "ISTP": { 
-        "grant": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"], 
-        "revoke": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"], 
-        "revoke_commands": [] 
+    "ISTP": {
+        "grant": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"],
+        "revoke": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"],
+        "revoke_commands": []
     }
 }
 
@@ -110,15 +110,90 @@ const open_mbti = (player) => {
 }
 
 const MBTI_CHEST = [
-    Item.of('minecraft:bricks', { "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "INTJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:redstone', { "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "INTP" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:crossbow', { "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "ENTJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:emerald', { "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "ENTP" }, "minecraft:custom_data": { "UI": 1 } }),
+    Item.of('minecraft:bricks', {
+        "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "INTJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Ability: Create light' },
+            { "color": "gray", "italic": false, "text": 'Increased reach' },
+            { "color": "gray", "italic": false, "text": 'Wall climbing' },
+            { "color": "gray", "italic": false, "text": 'Weakness V' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:redstone', {
+        "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "INTP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Better enchanting' },
+            { "color": "gray", "italic": false, "text": 'Cheap anvil cost' },
+            { "color": "gray", "italic": false, "text": 'Phasing' },
+            { "color": "gray", "italic": false, "text": 'Hurt by water & grass' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:crossbow', {
+        "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "ENTJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Ability: Knockback Sniper' },
+            { "color": "gray", "italic": false, "text": 'Cant use weapons' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:emerald', {
+        "minecraft:item_name": { "color": "light_purple", "italic": false, "text": "ENTP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Hero of the village' },
+            { "color": "gray", "italic": false, "text": 'Increased aggro range' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
     Item.of("minecraft:air"),
-    Item.of('minecraft:iron_chestplate', { "minecraft:item_name": { "color": "blue", "italic": false, "text": "ISTJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:milk_bucket', { "minecraft:item_name": { "color": "blue", "italic": false, "text": "ISFJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:iron_pickaxe', { "minecraft:item_name": { "color": "blue", "italic": false, "text": "ESTJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of('minecraft:cake', { "minecraft:item_name": { "color": "blue", "italic": false, "text": "ESFJ" }, "minecraft:custom_data": { "UI": 1 } }),
+
+    Item.of('minecraft:iron_chestplate', {
+        "minecraft:item_name": { "color": "blue", "italic": false, "text": "ISTJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Fire resistance' },
+            { "color": "gray", "italic": false, "text": 'Absorption V' },
+            { "color": "gray", "italic": false, "text": 'Explosion immunity' },
+            { "color": "gray", "italic": false, "text": 'Cant swim' },
+            { "color": "gray", "italic": false, "text": 'Increased Fall damage' },
+            { "color": "gray", "italic": false, "text": 'Slowness' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:milk_bucket', {
+        "minecraft:item_name": { "color": "blue", "italic": false, "text": "ISFJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": 'Interact with entity to give:' },
+            { "color": "gray", "italic": false, "text": 'Regeneration II' },
+            { "color": "gray", "italic": false, "text": 'Absorption II' },
+            { "color": "gray", "italic": false, "text": 'Takes 5 hearts' }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:iron_pickaxe', {
+        "minecraft:item_name": { "color": "blue", "italic": false, "text": "ESTJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Haste III" },
+            { "color": "gray", "italic": false, "text": "Tools use more durability" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of('minecraft:cake', {
+        "minecraft:item_name": { "color": "blue", "italic": false, "text": "ESFJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Crafted food gives more saturation" },
+            { "color": "gray", "italic": false, "text": "Can only eat crafted food" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
     Item.of("minecraft:air"),
     Item.of("minecraft:air"),
     Item.of("minecraft:air"),
@@ -128,15 +203,92 @@ const MBTI_CHEST = [
     Item.of("minecraft:air"),
     Item.of("minecraft:air"),
     Item.of("minecraft:air"),
-    Item.of("minecraft:ender_eye", { "minecraft:item_name": { "color": "green", "italic": false, "text": "INFJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:lead", { "minecraft:item_name": { "color": "green", "italic": false, "text": "INFP" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:beacon", { "minecraft:item_name": { "color": "green", "italic": false, "text": "ENFJ" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:sugar", { "minecraft:item_name": { "color": "green", "italic": false, "text": "ENFP" }, "minecraft:custom_data": { "UI": 1 } }),
+
+    Item.of("minecraft:ender_eye", {
+        "minecraft:item_name": { "color": "green", "italic": false, "text": "INFJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Invisible" },
+            { "color": "gray", "italic": false, "text": "Mining fatigue V" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:lead", {
+        "minecraft:item_name": { "color": "green", "italic": false, "text": "INFP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Ability: Tame mob" },
+            { "color": "gray", "italic": false, "text": "Interact to ride entity" },
+            { "color": "gray", "italic": false, "text": "No regeneration" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:beacon", {
+        "minecraft:item_name": { "color": "green", "italic": false, "text": "ENFJ" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Aura of haste II" },
+            { "color": "gray", "italic": false, "text": "Aura of speed II" },
+            { "color": "gray", "italic": false, "text": "Aura of strength II" },
+            { "color": "gray", "italic": false, "text": "Slowness V" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:sugar", {
+        "minecraft:item_name": { "color": "green", "italic": false, "text": "ENFP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Speed III" },
+            { "color": "gray", "italic": false, "text": "Jump boost II" },
+            { "color": "gray", "italic": false, "text": "Hunger II" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
     Item.of("minecraft:air"),
-    Item.of("minecraft:anvil", { "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ISTP" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:compass", { "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ISFP" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:iron_sword", { "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ESTP" }, "minecraft:custom_data": { "UI": 1 } }),
-    Item.of("minecraft:music_disc_blocks", { "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ESFP" }, "minecraft:custom_data": { "UI": 1 } })
+
+    Item.of("minecraft:anvil", {
+        "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ISTP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Mobs drop 3x loot" },
+            { "color": "gray", "italic": false, "text": "Tools don't use durability" },
+            { "color": "gray", "italic": false, "text": "Can't sleep" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:compass", {
+        "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ISFP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Ability: Toggle Levitation" },
+            { "color": "gray", "italic": false, "text": "Dolphin's grace I" },
+            { "color": "gray", "italic": false, "text": "Slow falling I" },
+            { "color": "gray", "italic": false, "text": "Night Vision I" },
+            { "color": "gray", "italic": false, "text": "Saturation I" },
+            { "color": "gray", "italic": false, "text": "Adventure Mode" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:iron_sword", {
+        "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ESTP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Strength II" },
+            { "color": "gray", "italic": false, "text": "Deal damage through armour" },
+            { "color": "gray", "italic": false, "text": "Cant use weapons" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    }),
+
+    Item.of("minecraft:music_disc_blocks", {
+        "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ESFP" },
+        "lore": [
+            { "color": "gray", "italic": false, "text": "Ability: Toggle aura" },
+            { "color": "gray", "italic": false, "text": "Aura of blindness I" },
+            { "color": "gray", "italic": false, "text": "Aura of nausea III" },
+            { "color": "gray", "italic": false, "text": "Aura of caramelldansen" }
+        ],
+        "minecraft:custom_data": { "UI": 1 },
+    })
 ]
 
 
