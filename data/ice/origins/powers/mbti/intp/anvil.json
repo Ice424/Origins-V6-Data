@@ -1,0 +1,8 @@
+{
+    "type": "neoorigins:action_on_event",
+    "event": "mod_anvil_cost",
+    "modifier": {
+        "operation": "add_base",
+        "value": -30
+    }
+}   

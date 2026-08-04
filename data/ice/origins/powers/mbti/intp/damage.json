@@ -1,0 +1,32 @@
+{
+  "type": "neoorigins:condition_passive",
+  "condition": {
+    "type": "neoorigins:or",
+    "conditions": [
+      {
+        "type": "neoorigins:exposed_to_sun"
+      },
+      {
+        "type": "neoorigins:in_water"
+      },
+      {
+        "type": "neoorigins:in_rain"
+      },
+      {
+        "type": "neoorigins:on_block",
+        "block_condition": {
+          "type": "neoorigins:block",
+          "block": "minecraft:grass_block"
+        }
+      }
+    ]
+  },
+  "entity_action": {
+    "type": "neoorigins:damage",
+    "amount": 3.0,
+    "source": {
+      "name": "magic"
+    }
+  },
+  "interval": 20
+}

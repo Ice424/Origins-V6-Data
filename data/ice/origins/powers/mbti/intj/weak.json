@@ -1,0 +1,6 @@
+{
+    "type": "neoorigins:persistent_effect",
+    "effect": "minecraft:weakness",
+    "amplifier": 4,
+    "toggleable": false
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:muffle_sound",
+  "strength": 1.0,
+  "name": "Silent Step",
+  "description": "Sculk sensors and the Warden can no longer hear you."
+}

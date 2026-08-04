@@ -43,14 +43,46 @@ const mbti_map = {
         "revoke": ["ice:mbti/estp/damage_through_armour", "ice:mbti/estp/tools"],
         "revoke_commands": []
     },
-    "INFJ": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "INFP": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "INTJ": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "INTP": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "ISFJ": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "ISFP": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "ISTJ": { "grant": [], "revoke": [], "revoke_commands": [] },
-    "ISTP": { "grant": [], "revoke": [], "revoke_commands": [] }
+    "INFJ": {
+        "grant": ["ice:mbti/infj/invis", "ice:mbti/infj/footsteps", "ice:mbti/infj/fatigue"],
+        "revoke": ["ice:mbti/infj/invis", "ice:mbti/infj/footsteps", "ice:mbti/infj/fatigue"],
+        "revoke_commands": []
+    },
+    "INFP": {
+        "grant": ["ice:mbti/infp/regen", "ice:mbti/infp/ride", "ice:mbti/infp/tame", "ice:mbti/infp/target"],
+        "revoke": ["ice:mbti/infp/regen", "ice:mbti/infp/ride", "ice:mbti/infp/tame", "ice:mbti/infp/target"],
+        "revoke_commands": []
+    },
+    "INTJ": { 
+        "grant": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"], 
+        "revoke": ["ice:mbti/intj/climb", "ice:mbti/intj/light", "ice:mbti/intj/reach", "ice:mbti/intj/weak"], 
+        "revoke_commands": [] 
+    },
+    "INTP": {
+        "grant": ["ice:mbti/intp/anvil", "ice:mbti/intp/damage", "ice:mbti/intp/enchanting", "ice:mbti/intp/phasing"],
+        "revoke": ["ice:mbti/intp/anvil", "ice:mbti/intp/damage", "ice:mbti/intp/enchanting", "ice:mbti/intp/phasing"],
+        "revoke_commands": []
+    },
+    "ISFJ": {
+        "grant": ["ice:mbti/isfj/interact"],
+        "revoke": ["ice:mbti/isfj/interact"],
+        "revoke_commands": []
+    },
+    "ISFP": {
+        "grant": ["ice:mbti/isfp/adventure", "ice:mbti/isfp/effects", "ice:mbti/isfp/levitation"],
+        "revoke": ["ice:mbti/isfp/adventure", "ice:mbti/isfp/effects", "ice:mbti/isfp/levitation"],
+        "revoke_commands": ["gamemode survival"]
+    },
+    "ISTJ": {
+        "grant": ["ice:mbti/istj/blast_prot", "ice:mbti/istj/effects", "ice:mbti/istj/fall_damage", "ice:mbti/istj/sink"],
+        "revoke": ["ice:mbti/istj/blast_prot", "ice:mbti/istj/effects", "ice:mbti/istj/fall_damage", "ice:mbti/istj/sink"],
+        "revoke_commands": []
+    },
+    "ISTP": { 
+        "grant": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"], 
+        "revoke": ["ice:mbti/istp/durability_break", "ice:mbti/istp/durability_hit", "ice:mbti/istp/looting", "ice:mbti/istp/sleep"], 
+        "revoke_commands": [] 
+    }
 }
 
 var open_ui = {}

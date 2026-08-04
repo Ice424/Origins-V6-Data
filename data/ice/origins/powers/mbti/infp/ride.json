@@ -1,0 +1,8 @@
+{
+  "type": "neoorigins:mount",
+  "range": 6.0,
+  "cooldown_ticks": 60,
+  "allow_players": false,
+  "mount_position": "shoulder",
+  "key": "key.use"
+}

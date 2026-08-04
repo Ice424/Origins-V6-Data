@@ -1,0 +1,15 @@
+{
+    "type": "neoorigins:persistent_effect",
+    "effects": [
+        {
+            "effect": "minecraft:fire_resistance",
+            "amplifier": 0
+        },
+        {
+            "effect": "minecraft:absorption",
+            "amplifier": 4,
+            "comment": "//TODO make this not be infinite hearts"
+        }
+    ],
+    "toggleable": false
+}

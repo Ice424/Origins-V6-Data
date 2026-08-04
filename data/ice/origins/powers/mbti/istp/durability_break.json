@@ -1,9 +1,12 @@
 {
     "type": "neoorigins:action_on_event",
-    "event": "hit_dealt",
+    "event": "block_break",
     "entity_action": {
         "type": "neoorigins:equipped_item_action",
         "equipment_slot": "mainhand",
-        "item_action": {"type": "neoorigins:damage", "amount": 5}
+        "item_action": {
+            "type": "neoorigins:damage",
+            "amount": -1
+        }
     }
 }

@@ -1,0 +1,4 @@
+{
+    "type": "neoorigins:wraith_phase",
+    "blocked_blocks": ["minecraft:obsidian", "minecraft:crying_obsidian", "minecraft:bedrock", "minecraft:grass_block"]
+}

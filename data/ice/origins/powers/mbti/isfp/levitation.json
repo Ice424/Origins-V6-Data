@@ -1,0 +1,6 @@
+{
+    "type": "neoorigins:persistent_effect",
+    "effect": "minecraft:levitation",
+    "amplifier": 2,
+    "toggleable": true
+}
