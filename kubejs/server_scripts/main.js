@@ -91,6 +91,7 @@ var open_ui = {}
 
 
 const open_mbti = (player) => {
+    player.addTag("mbti")
     var minecart = player.level.createEntity("minecraft:chest_minecart")
     minecart.setPosition(player.x, player.y, player.z)
     minecart.addTag(String(player.uuid))
@@ -150,7 +151,7 @@ const MBTI_CHEST = [
         "minecraft:custom_data": { "UI": 1 },
     }),
 
-    Item.of("minecraft:air"),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
 
     Item.of('minecraft:iron_chestplate', {
         "minecraft:item_name": { "color": "blue", "italic": false, "text": "ISTJ" },
@@ -194,15 +195,15 @@ const MBTI_CHEST = [
         "minecraft:custom_data": { "UI": 1 },
     }),
 
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
-    Item.of("minecraft:air"),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
 
     Item.of("minecraft:ender_eye", {
         "minecraft:item_name": { "color": "green", "italic": false, "text": "INFJ" },
@@ -244,7 +245,7 @@ const MBTI_CHEST = [
         "minecraft:custom_data": { "UI": 1 },
     }),
 
-    Item.of("minecraft:air"),
+    Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}),
 
     Item.of("minecraft:anvil", {
         "minecraft:item_name": { "color": "yellow", "italic": false, "text": "ISTP" },
@@ -298,6 +299,8 @@ NeoOrigins.registerCallback("ice:open_mbti_ui", player => {
 })
 
 const close = (player) => {
+    player.removeTag("mbti")
+    player.removeTag("thief")
     delete open_ui[String(player.uuid)]
     var minecart = player.level.getEntities().find(e => {
         return e.type == "minecraft:chest_minecart" &&
@@ -335,39 +338,46 @@ PlayerEvents.tick(e => {
         let missingIndex = -1
         if (PreviousView.length != 0) {
             if (CurrentView.length != PreviousView.length) {
+                if (player.getTags().contains("mbti")) {
 
-                missingIndex = PreviousView.findIndex(stack => stack.id === "minecraft:air");
-                let selected_mbti = ""
-
-
-
+                    missingIndex = PreviousView.findIndex(stack => stack.id === "minecraft:air");
+                    let selected_mbti = ""
 
 
-                if (missingIndex !== -1) {
-                    selected_mbti = mbti[missingIndex];
-                    close(player);
-                }
 
-                server.runCommandSilent("clear @a *[minecraft:custom_data~{UI:1.0d}]")
 
-                if (pData.getAllKeys().contains(String(player.uuid))) {
-                    let old_mbti = pData.getString(String(player.uuid))
-                    for (let i = 0; i < mbti_map[old_mbti]["revoke"].length; i++) {
-                        console.log("Removed " + mbti_map[old_mbti]["revoke"][i])
-                        server.runCommand(`power remove ${String(player.uuid)} ${mbti_map[old_mbti]["revoke"][i]}`)
+
+                    if (missingIndex !== -1) {
+                        selected_mbti = mbti[missingIndex];
+                        close(player);
                     }
-                    for (let i = 0; i < mbti_map[old_mbti]["revoke_commands"].length; i++) {
-                        console.log("Removed " + mbti_map[old_mbti]["revoke_commands"][i])
-                        server.runCommandSilent(`execute as ${String(player.uuid)} at ${String(player.uuid)} run ${mbti_map[old_mbti]["revoke_commands"][i]}`)
+
+                    server.runCommandSilent(`clear ${String(player.getUsername())} *[minecraft:custom_data~{UI:1.0d}]`)
+
+                    if (pData.getAllKeys().contains(String(player.uuid))) {
+                        let old_mbti = pData.getString(String(player.uuid))
+                        for (let i = 0; i < mbti_map[old_mbti]["revoke"].length; i++) {
+                            console.log("Removed " + mbti_map[old_mbti]["revoke"][i])
+                            server.runCommand(`power remove ${String(player.uuid)} ${mbti_map[old_mbti]["revoke"][i]}`)
+                        }
+                        for (let i = 0; i < mbti_map[old_mbti]["revoke_commands"].length; i++) {
+                            console.log("Removed " + mbti_map[old_mbti]["revoke_commands"][i])
+                            server.runCommandSilent(`execute as ${String(player.uuid)} at ${String(player.uuid)} run ${mbti_map[old_mbti]["revoke_commands"][i]}`)
+                        }
                     }
-                }
 
 
-                for (let i = 0; i < mbti_map[selected_mbti]["grant"].length; i++) {
-                    console.log("Granted " + mbti_map[selected_mbti]["grant"][i])
-                    server.runCommand(`power grant ${String(player.uuid)} ${mbti_map[selected_mbti]["grant"][i]}`)
+                    for (let i = 0; i < mbti_map[selected_mbti]["grant"].length; i++) {
+                        console.log("Granted " + mbti_map[selected_mbti]["grant"][i])
+                        server.runCommand(`power grant ${String(player.uuid)} ${mbti_map[selected_mbti]["grant"][i]}`)
+                    }
+                    pData.putString(String(player.uuid), selected_mbti)
                 }
-                pData.putString(String(player.uuid), selected_mbti)
+                if (player.getTags().contains("thief")) {
+                    close(player)
+                    server.runCommand(`clear ${String(player.getUsername())} *[minecraft:custom_data~{UI:1.0d}]`)
+                
+                }
             }
         }
         if (missingIndex == -1) {
@@ -376,3 +386,87 @@ PlayerEvents.tick(e => {
 
     }
 })
+
+
+
+ServerEvents.commandRegistry(event => {
+    const { commands: Commands, arguments: Arguments } = event
+
+    event.register(Commands.literal('stealInv') // The name of the command
+        .requires(source => source.hasPermission(2)) // Check if the player has operator privileges
+        .then(Commands.argument('target', Arguments.PLAYER.create(event))
+            .executes(ctx => stealInv(ctx.source.player, Arguments.PLAYER.getResult(ctx, 'target'))) // Toggle flight for the player included in the `target` argument
+        )
+    )
+    event.register(Commands.literal('stealArm') // The name of the command
+        .requires(source => source.hasPermission(2)) // Check if the player has operator privileges
+        .then(Commands.argument('target', Arguments.PLAYER.create(event))
+            .executes(ctx => stealArm(ctx.source.player, Arguments.PLAYER.getResult(ctx, 'target'))) // Toggle flight for the player included in the `target` argument
+        )
+    )
+})
+
+const stealInv = (player, target) => {
+    player.addTag("thief")
+    let server = player.level.server
+    server.runCommand(`execute as ${String(player.uuid)} run say targeting ${String(target.getUsername())}`)
+    open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
+    var minecart = player.level.createEntity("minecraft:chest_minecart")
+    minecart.setPosition(player.x, player.y, player.z)
+    minecart.addTag(String(player.uuid))
+    minecart.addTag("invisible_minecart")
+    minecart.setInvulnerable(true)
+    minecart.setNoGravity(true)
+    minecart.setSilent(true)
+    minecart.spawn()
+    for (let i = 9; i <= 35; i++) {
+        console.log(i)
+        console.log(target.inventory.getItem(i))
+        fill_slot(minecart, i-9, target.inventory.getItem(i))
+    }
+    if (minecart) {
+        player.openMenu(minecart)
+    }
+    return 1
+}
+
+const stealArm = (player, target) => {
+    player.addTag("thief")
+    let server = player.level.server
+    server.runCommand(`execute as ${String(player.uuid)} run say targeting ${String(target.getUsername())}`)
+    open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
+    var minecart = player.level.createEntity("minecraft:chest_minecart")
+    minecart.setPosition(player.x, player.y, player.z)
+    minecart.addTag(String(player.uuid))
+    minecart.addTag("invisible_minecart")
+    minecart.setInvulnerable(true)
+    minecart.setNoGravity(true)
+    minecart.setSilent(true)
+    minecart.spawn()
+    for (let i = 0; i <= 35; i++) {
+        minecart.setStackInSlot(i, Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}))
+    }
+    for (let i = 0; i <= 9; i++) {
+        console.log(i)
+        fill_slot(minecart, i+18, target.inventory.getItem(i))
+    }
+    fill_slot(minecart, 0, target.inventory.getItem(39))
+    fill_slot(minecart, 1, target.inventory.getItem(38))
+    fill_slot(minecart, 2, target.inventory.getItem(37))
+    fill_slot(minecart, 3, target.inventory.getItem(36))
+    fill_slot(minecart, 9, target.inventory.getItem(40))
+
+    if (minecart) {
+        player.openMenu(minecart)
+    }
+    return 1
+}
+
+const fill_slot = (minecart, slot, item) => {
+    if (item != Item.of("minecraft:air")){
+            minecart.setStackInSlot(slot, item)
+        } else {
+            minecart.setStackInSlot(slot, Item.of("minecraft:barrier", {"hide_tooltip":{},"custom_model_data":1, "minecraft:custom_data": { "UI": 1 }}))
+        
+    }
+}
