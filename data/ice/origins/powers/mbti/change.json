@@ -4,6 +4,6 @@
         "type": "neoorigins:kubejs_callback",
         "id": "ice:open_mbti_ui"
     },
-    "cooldown_ticks": 120,
+    "cooldown_ticks": 12000,
     "name": "Change"
 }
