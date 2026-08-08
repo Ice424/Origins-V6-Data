@@ -1,0 +1,1 @@
+say REMEMBER TO RUN /kubejs reload server-scripts

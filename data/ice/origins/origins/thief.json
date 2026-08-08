@@ -1,9 +1,12 @@
 {
   "powers": [
-    "ice:thief/frail"
+    "ice:thief/frail",
+    "ice:thief/steal_arm",
+    "ice:thief/steal_inv",
+    "ice:thief/cooldown"
   ],
   "icon": {
-    "item": "minecraft:slime_ball"
+    "item": "minecraft:bundle"
   },
   "order": 0,
   "impact": 1,

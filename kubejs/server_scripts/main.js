@@ -1,5 +1,5 @@
 const mbti = [
-    "INTJ", "INTP", "ENTJ", "ENTP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "INFJ", "INFP", "ENFJ", "ENFP", "ISTP", "ISFP", "ESTP", "ESFP"
+    "INTJ", "INTP", "ENTJ", "ENTP", "ENTP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "ESFJ", "INFJ", "INFP", "ENFJ", "ENFP", "ENFP", "ISTP", "ISFP", "ESTP", "ESFP"
 ]
 const mbti_map = {
     "ENFJ": {
@@ -87,28 +87,6 @@ const mbti_map = {
 
 var open_ui = {}
 
-
-
-
-const open_mbti = (player) => {
-    player.addTag("mbti")
-    var minecart = player.level.createEntity("minecraft:chest_minecart")
-    minecart.setPosition(player.x, player.y, player.z)
-    minecart.addTag(String(player.uuid))
-    minecart.addTag("invisible_minecart")
-    minecart.setInvulnerable(true)
-    minecart.setNoGravity(true)
-    minecart.setSilent(true)
-    minecart.spawn()
-    for (let i = 0; i < MBTI_CHEST.length; i++) {
-        minecart.setStackInSlot(i, MBTI_CHEST[i].copy())
-    }
-    open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
-    if (minecart) {
-        player.openMenu(minecart)
-    }
-    return 1
-}
 
 const MBTI_CHEST = [
     Item.of('minecraft:bricks', {
@@ -298,6 +276,27 @@ NeoOrigins.registerCallback("ice:open_mbti_ui", player => {
     open_mbti(player)
 })
 
+
+const open_mbti = (player) => {
+    player.addTag("mbti")
+    var minecart = player.level.createEntity("minecraft:chest_minecart")
+    minecart.setPosition(player.x, player.y, player.z)
+    minecart.addTag(String(player.uuid))
+    minecart.addTag("invisible_minecart")
+    minecart.setInvulnerable(true)
+    minecart.setNoGravity(true)
+    minecart.setSilent(true)
+    minecart.spawn()
+    for (let i = 0; i < MBTI_CHEST.length; i++) {
+        minecart.setStackInSlot(i, MBTI_CHEST[i].copy())
+    }
+    open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
+    if (minecart) {
+        player.openMenu(minecart)
+    }
+    return 1
+}
+
 const close = (player) => {
     player.removeTag("mbti")
     player.removeTag("thief")
@@ -352,6 +351,7 @@ PlayerEvents.tick(e => {
                         close(player);
                     }
 
+
                     server.runCommandSilent(`clear ${String(player.getUsername())} *[minecraft:custom_data~{UI:1.0d}]`)
 
                     if (pData.getAllKeys().contains(String(player.uuid))) {
@@ -392,24 +392,36 @@ PlayerEvents.tick(e => {
 ServerEvents.commandRegistry(event => {
     const { commands: Commands, arguments: Arguments } = event
 
-    event.register(Commands.literal('stealInv') // The name of the command
-        .requires(source => source.hasPermission(2)) // Check if the player has operator privileges
-        .then(Commands.argument('target', Arguments.PLAYER.create(event))
-            .executes(ctx => stealInv(ctx.source.player, Arguments.PLAYER.getResult(ctx, 'target'))) // Toggle flight for the player included in the `target` argument
-        )
+    event.register(Commands.literal('stealInv') 
+        .requires(source => source.hasPermission(2))
+        .executes(ctx => stealInv(ctx.source.player))
+
     )
-    event.register(Commands.literal('stealArm') // The name of the command
-        .requires(source => source.hasPermission(2)) // Check if the player has operator privileges
-        .then(Commands.argument('target', Arguments.PLAYER.create(event))
-            .executes(ctx => stealArm(ctx.source.player, Arguments.PLAYER.getResult(ctx, 'target'))) // Toggle flight for the player included in the `target` argument
-        )
+    event.register(Commands.literal('stealArm') 
+        .requires(source => source.hasPermission(2)) 
+        .executes(ctx => stealArm(ctx.source.player)) 
+        
     )
 })
 
-const stealInv = (player, target) => {
+NeoOrigins.registerCallback("ice:steal_inv", player => {
+    stealInv(player)
+})
+
+NeoOrigins.registerCallback("ice:steal_arm", player => {
+    stealArm(player)
+})
+const stealInv = (player) => {
     player.addTag("thief")
-    let server = player.level.server
-    server.runCommand(`execute as ${String(player.uuid)} run say targeting ${String(target.getUsername())}`)
+    const ray = player.rayTrace(124)
+    if (!ray.entity) {return 0}
+    if (!ray.entity.isPlayer()) {
+        player.tell("Only works on players")
+        return 0}
+    const target = ray.entity
+    
+    const server = player.level.server
+    server.runCommandSilent(`resource set ${String(player.getUsername())} ice:thief/cooldown 0`)
     open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
     var minecart = player.level.createEntity("minecraft:chest_minecart")
     minecart.setPosition(player.x, player.y, player.z)
@@ -430,10 +442,17 @@ const stealInv = (player, target) => {
     return 1
 }
 
-const stealArm = (player, target) => {
+const stealArm = (player) => {
     player.addTag("thief")
-    let server = player.level.server
-    server.runCommand(`execute as ${String(player.uuid)} run say targeting ${String(target.getUsername())}`)
+    const ray = player.rayTrace(124)
+    if (!ray.entity) {return 0}
+    if (!ray.entity.isPlayer()) {
+        player.tell("Only works on players")
+        return 0}
+    const target = ray.entity
+    const server = player.level.server
+
+    server.runCommandSilent(`resource set ${String(player.getUsername())} ice:thief/cooldown 0`)
     open_ui[String(player.uuid)] = { "CurrentView": [], "PreviousView": [] }
     var minecart = player.level.createEntity("minecraft:chest_minecart")
     minecart.setPosition(player.x, player.y, player.z)
@@ -454,7 +473,7 @@ const stealArm = (player, target) => {
     fill_slot(minecart, 1, target.inventory.getItem(38))
     fill_slot(minecart, 2, target.inventory.getItem(37))
     fill_slot(minecart, 3, target.inventory.getItem(36))
-    fill_slot(minecart, 9, target.inventory.getItem(40))
+    fill_slot(minecart, 9 , target.inventory.getItem(40))
 
     if (minecart) {
         player.openMenu(minecart)

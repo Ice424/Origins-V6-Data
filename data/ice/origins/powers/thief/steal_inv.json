@@ -1,0 +1,16 @@
+{
+    "type": "neoorigins:active_ability",
+    "entity_action": {
+        "type": "neoorigins:kubejs_callback",
+        "id": "ice:steal_inv"
+    },
+    "cooldown_ticks": 0,
+    "name": "Steal Inventory",
+    "description": "Opens the inventory of the player you are looking at",
+    "condition": {
+        "type": "neoorigins:resource_level",
+        "resource": "ice:thief/cooldown",
+        "comparison": "==",
+        "compare_to": 1200
+    }
+}

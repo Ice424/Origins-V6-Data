@@ -1,0 +1,12 @@
+{
+    "type": "neoorigins:resource",
+    "regen_rate": 1,
+    "max": 90,
+    "min": 0,
+    "hud_render": {
+        "label": "Steal",
+        "color": "#55AAFF"
+    },
+    "hidden": false,
+    "description": "This power would be hidden but then the bar doesn't appear"
+}
