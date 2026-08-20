@@ -1,1 +1,1 @@
-say reloaded from datapack
+say REMEMBER TO RUN /kubejs reload server-scripts

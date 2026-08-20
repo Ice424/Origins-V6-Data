@@ -1,0 +1,11 @@
+{
+    "type": "neoorigins:active_ability",
+    "entity_action": {
+        "type": "neoorigins:kubejs_callback",
+        "id": "ice:rewind"
+    },
+    "cooldown_ticks": 1400,
+    "name": "Rewind",
+    "cooldown_icon": "minecraft:clock",
+    "description": "After 10 seconds every entity will be moved to where it was when you activated the ability"
+}

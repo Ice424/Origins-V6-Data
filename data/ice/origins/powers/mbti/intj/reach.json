@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:size_scaling",
+  "scale": 1,
+  "modify_reach": true,
+  "reach_bonus": 3
+}

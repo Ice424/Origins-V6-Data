@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "ice:crimson/rewind"
+  ],
+  "icon": {
+    "item": "minecraft:clock"
+  },
+  "order": 0,
+  "impact": 1,
+  "name": "Rewind"
+}

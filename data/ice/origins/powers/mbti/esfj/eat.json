@@ -1,0 +1,5 @@
+{
+    "type": "neoorigins:restrict_items",
+    "item_condition": {"tag": "ice:natural_foods"},
+    "prevent_use": true
+}

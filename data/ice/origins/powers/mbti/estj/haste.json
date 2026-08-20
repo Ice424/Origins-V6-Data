@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effect": "minecraft:haste",
+  "amplifier": 2,
+  "toggleable": false
+}

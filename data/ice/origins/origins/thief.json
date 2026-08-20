@@ -1,0 +1,14 @@
+{
+  "powers": [
+    "ice:thief/frail",
+    "ice:thief/steal_arm",
+    "ice:thief/steal_inv",
+    "ice:thief/cooldown"
+  ],
+  "icon": {
+    "item": "minecraft:bundle"
+  },
+  "order": 0,
+  "impact": 1,
+  "name": "Kazuma"
+}

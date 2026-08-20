@@ -1,0 +1,60 @@
+{
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "playsound ice:ice.sniper.fire master @a ~ ~ ~ 7 1"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "ice:mbti/entj/fire",
+                "source": "fired"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 40,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "neoorigins:spawn_projectile",
+                            "entity_type": "minecraft:arrow",
+                            "inaccuracy": 0,
+                            "count": 1,
+                            "speed": 100
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "clear @s *[minecraft:custom_data~{sniper:{}}]"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "key": {
+        "key": "key.use"
+    },
+    "condition": {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "neoorigins:nbt",
+                    "nbt": "{sniper: {}}"
+                },
+
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:spyglass"
+                    }
+                }
+            ]
+        }
+    }
+}

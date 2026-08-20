@@ -1,0 +1,7 @@
+{
+    "type": "neoorigins:action_over_time",
+    "entity_action": {
+        "type": "neoorigins:execute_command",
+        "command": "gamemode adventure"
+    }
+}

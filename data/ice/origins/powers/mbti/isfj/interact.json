@@ -1,0 +1,44 @@
+{
+    "type": "neoorigins:action_on_event",
+    "event": "entity_use",
+    "entity_action": [
+        {
+            "type": "neoorigins:target_action",
+            "action": {
+                "type": "neoorigins:and",
+                "actions": [
+                    {
+                        "type": "neoorigins:clear_effect"
+                    },
+                    {
+                        "type": "neoorigins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:regeneration",
+                            "duration": 1200,
+                            "amplifier": 1
+                        }
+                    },
+                    {
+                        "type": "neoorigins:apply_effect",
+                        "effect": {
+                            "effect": "minecraft:absorption",
+                            "duration": 1200,
+                            "amplifier": 1
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "neoorigins:actor_action",
+            "action": {
+                "type": "neoorigins:damage",
+                "amount": 10,
+                "damage_type": "magic"
+            }
+        }
+    ],
+    "cooldown_ticks": 400,
+    "cooldown_icon": "minecraft:potion",
+    "always_show_icon": true
+}

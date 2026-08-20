@@ -1,0 +1,22 @@
+{
+    "type": "origins:action_over_time",
+    "entity_action": {
+        "type": "neoorigins:area_of_effect",
+        "radius": 50,
+        "shape": "sphere",
+        "include_source": true,
+        "entity_action": {
+            "type": "neoorigins:apply_effect",
+            "effect": "minecraft:blindness",
+            "duration": 300,
+            "amplifier": 2,
+            "show_particles": true
+        }
+    },
+    "interval": 100,
+    "hidden": true,
+    "condition": {
+        "type": "neoorigins:power_active",
+        "power": "ice:mbti/esfp/effects_mode"
+    }
+}

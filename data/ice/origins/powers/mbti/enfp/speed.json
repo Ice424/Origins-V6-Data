@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effect": "minecraft:speed",
+  "amplifier": 2,
+  "toggleable": false
+}

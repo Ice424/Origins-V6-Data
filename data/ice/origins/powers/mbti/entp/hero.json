@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effect": "minecraft:hero_of_the_village",
+  "amplifier": 1,
+  "toggleable": false
+}

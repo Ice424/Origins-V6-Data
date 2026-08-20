@@ -1,0 +1,12 @@
+{
+    "type": "neoorigins:action_on_event",
+    "event": "hit_dealt",
+    "entity_action": {
+        "type": "neoorigins:equipped_item_action",
+        "equipment_slot": "mainhand",
+        "item_action": {
+            "type": "neoorigins:damage",
+            "amount": -1
+        }
+    }
+}

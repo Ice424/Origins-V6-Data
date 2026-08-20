@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:command_pack",
+  "range": 32.0,
+  "cooldown_ticks": 40,
+  "key": "key.attack"
+}

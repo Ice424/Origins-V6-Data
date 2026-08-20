@@ -1,0 +1,6 @@
+{
+  "type": "neoorigins:persistent_effect",
+  "effect": "minecraft:mining_fatigue",
+  "amplifier": 4,
+  "toggleable": false
+}
