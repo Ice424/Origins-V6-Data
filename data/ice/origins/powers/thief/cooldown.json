@@ -5,7 +5,8 @@
     "min": 0,
     "hud_render": {
         "label": "Steal",
-        "color": "#55AAFF"
+        "color": "#55AAFF",
+        "always_render": true
     },
     "hidden": false,
     "description": "This power would be hidden but then the bar doesn't appear"

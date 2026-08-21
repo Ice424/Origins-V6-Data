@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ddd",
+        "dfd",
+        "dbd"
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:diamond"
+        },
+        "f": {
+            "tag": "minecraft:flowers"
+        },
+        "b": {
+            "item": "minecraft:cyan_dye"
+        }
+    },
+    "result": {
+        "id": "ice:aqua_flower"
+    }
+}

@@ -402,8 +402,17 @@ ServerEvents.commandRegistry(event => {
         .executes(ctx => stealArm(ctx.source.player)) 
         
     )
+    event.register(Commands.literal('testing') 
+        .requires(source => source.hasPermission(2)) 
+        .executes(ctx => testing(ctx.source.player)) 
+        
+    )
 })
 
+const testing = player => {
+    player.tell()
+    return 1
+}
 NeoOrigins.registerCallback("ice:steal_inv", player => {
     stealInv(player)
 })

@@ -11,6 +11,6 @@
         "type": "neoorigins:resource_level",
         "resource": "ice:thief/cooldown",
         "comparison": "==",
-        "compare_to": 1200
+        "compare_to": 90
     }
 }
