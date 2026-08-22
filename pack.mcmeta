@@ -1,6 +1,10 @@
 {
-    "pack": {
-        "pack_format": 48,
-        "description": "The sixth version of Ice424's Origins"
-    }
+	"pack": {
+		"pack_format": 48,
+		"description": "The sixth version of Ice424's Origins",
+		"supported_formats": {
+			"min_inclusive": 48,
+			"max_inclusive": 48
+		}
+	}
 }

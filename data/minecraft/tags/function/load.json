@@ -1,5 +1,4 @@
 {
-  "values":[
-	"ice:load"
-  ]
+	"replace": false,
+	"values": ["animated_java:global/on_load", "ice:load"]
 }
