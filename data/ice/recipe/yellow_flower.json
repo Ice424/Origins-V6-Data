@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ddd",
+    "dfd",
+    "glg"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:yellow_dye"
+    }
+  },
+  "result": {
+    "id": "ice:yellow_flower"
+  }
+}

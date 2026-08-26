@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "adg",
+    "pfy",
+    "odb"
+  ],
+  "key": {
+    "a": {
+      "item": "ice:aqua_flower"
+    },
+    "p": {
+      "item": "ice:purple_flower"
+    },
+    "o": {
+      "item": "ice:orange_flower"
+    },
+    "g": {
+      "item": "ice:green_flower"
+    },
+    "y": {
+      "item": "ice:yellow_flower"
+    },
+    "b": {
+      "item": "ice:blue_flower"
+    },
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "id": "ice:omega_flower"
+  }
+}

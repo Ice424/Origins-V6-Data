@@ -1,22 +1,37 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "ddd",
-        "dfd",
-        "dbd"
-    ],
-    "key": {
-        "d": {
-            "item": "minecraft:diamond"
-        },
-        "f": {
-            "tag": "minecraft:flowers"
-        },
-        "b": {
-            "item": "minecraft:cyan_dye"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sme",
+    "bfq",
+    "glg"
+  ],
+  "key": {
+    "f": {
+      "tag": "minecraft:flowers"
     },
-    "result": {
-        "id": "ice:aqua_flower"
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:cyan_dye"
+    },
+    "m": {
+      "item": "minecraft:diamond_sword"
+    },
+    "s": {
+      "item": "minecraft:golden_sword"
+    },
+    "q": {
+      "item": "minecraft:wooden_sword"
+    },
+    "b": {
+      "item": "minecraft:stone_sword"
+    },
+    "e": {
+      "item": "minecraft:iron_sword"
     }
+  },
+  "result": {
+    "id": "ice:aqua_flower"
+  }
 }

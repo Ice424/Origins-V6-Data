@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "hfh",
+    "glg"
+  ],
+  "key": {
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:purple_dye"
+    },
+    "p": {
+      "item": "minecraft:emerald"
+    },
+    "h": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "ice:purple_flower"
+  }
+}

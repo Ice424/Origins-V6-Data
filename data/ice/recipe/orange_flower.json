@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sms",
+    "mfm",
+    "glg"
+  ],
+  "key": {
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:orange_dye"
+    },
+    "m": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "s": {
+      "item": "minecraft:golden_apple"
+    }
+  },
+  "result": {
+    "id": "ice:orange_flower"
+  }
+}

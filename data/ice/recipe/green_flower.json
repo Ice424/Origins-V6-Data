@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sms",
+    "qfq",
+    "glg"
+  ],
+  "key": {
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:green_dye"
+    },
+    "m": {
+      "item": "minecraft:cake"
+    },
+    "s": {
+      "item": "minecraft:golden_carrot"
+    },
+    "q": {
+      "item": "minecraft:smoker"
+    }
+  },
+  "result": {
+    "id": "ice:green_flower"
+  }
+}

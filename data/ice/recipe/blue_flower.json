@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "hfh",
+    "glg"
+  ],
+  "key": {
+    "f": {
+      "tag": "minecraft:flowers"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "l": {
+      "item": "minecraft:blue_dye"
+    },
+    "p": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "h": {
+      "item": "minecraft:pufferfish"
+    }
+  },
+  "result": {
+    "id": "ice:blue_flower"
+  }
+}

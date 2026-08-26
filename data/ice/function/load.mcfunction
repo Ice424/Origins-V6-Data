@@ -1,1 +1,2 @@
-say REMEMBER TO RUN /kubejs reload server-scripts
+tellraw @a {"bold":true,"clickEvent":{"action":"run_command","value":"/kubejs reload server-scripts"},"color":"dark_green","hoverEvent":{"action":"show_text","value":[{"text":"Run Command"}]},"text":"/kubejs reload server-scripts"}
+tellraw @a {"bold":true,"clickEvent":{"action":"run_command","value":"/kubejs reload startup-scripts"},"color":"dark_green","hoverEvent":{"action":"show_text","value":[{"text":"Run Command"}]},"text":"/kubejs reload startup-scripts"}
