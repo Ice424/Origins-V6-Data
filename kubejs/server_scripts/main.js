@@ -320,8 +320,8 @@ PlayerEvents.inventoryClosed(e => {
 })
 
 PlayerEvents.tick(e => {
-    let player = e.getPlayer()
-
+    const player = e.getPlayer()
+    const server = player.getServer()
 
     if (String(player.uuid) in open_ui) {
         let CurrentView = open_ui[String(player.uuid)].CurrentView
@@ -331,7 +331,7 @@ PlayerEvents.tick(e => {
             e.tags.contains(String(player.uuid))
         )
         let pData = player.persistentData
-        let server = player.getServer()
+        
         server.runCommandSilent(`tp ${String(minecart.uuid)} ${String(player.uuid)}`)
         open_ui[String(player.uuid)].CurrentView = minecart.getAllItems()
         let missingIndex = -1
@@ -385,7 +385,105 @@ PlayerEvents.tick(e => {
         }
 
     }
+
+    //blue flower
+    if (player.level.isClientSide()) {
+        return
+    }
+
+    const key = player.uuid.toString()
+    const snapshot = global.activeAreas.get(key)
+
+    if (snapshot) {
+        if (!isPlayerInside(snapshot, player)) {
+        restoreArea(snapshot)
+        global.activeAreas.delete(key)
+    }
+    }
+
+    if (!player.isUsingItem()) {
+        //console.log(`kill @e[type=block_display, tag=blue_platform, tag=${String(player.uuid)}]`)
+        server.runCommandSilent(`kill @e[type=block_display, tag=blue_platform, tag=${String(player.uuid)}]`)
+        return
+    }
+
+    const item = player.getUseItem()
+
+    if (item.id !== 'ice:blue_flower') {
+        return
+    }
+
+    let charge = (player.persistentData.getFloat("blueFlowerCharge") ?? 0)
+    const eye = player.getEyePosition()
+    const look = player.getLookAngle()
+
+    const target_pos = {
+        x: eye.x() + look.x() * charge,
+        y: eye.y() + look.y() * charge,
+        z: eye.z() + look.z() * charge
+    }
+    server.runCommandSilent(`execute at ${String(player.uuid)} as ${String(player.uuid)} run tp @e[tag=blue_platform, tag=${String(player.uuid)}] ${Math.round(target_pos.x)} ${Math.round(target_pos.y)-3} ${Math.round(target_pos.z)}`)
+    server.runCommand("tag @e list")
+    console.log(`execute at ${String(player.uuid)} as ${String(player.uuid)} run tp @e[tag=blue_platform, tag=${String(player.uuid)}] ${Math.round(target_pos.x)} ${Math.round(target_pos.y)-3} ${Math.round(target_pos.z)}`)
+    if (charge < 64) {
+        player.persistentData.putFloat("blueFlowerCharge", charge+=0.5)
+    }
+
 })
+
+function isPlayerInside(snapshot, player) {
+    const box = player.boundingBox
+
+    return (
+        box.minX >= snapshot.minX &&
+        box.maxX <= snapshot.maxX &&
+
+        box.minY >= snapshot.minY &&
+        box.maxY <= snapshot.maxY &&
+
+        box.minZ >= snapshot.minZ &&
+        box.maxZ <= snapshot.maxZ
+    )
+}
+
+function restoreArea(snapshot) {
+    const level = snapshot.level
+    
+    // First restore all block states
+    for (let saved of snapshot.blocks) {
+        let pos = new BlockPos(
+            saved.x,
+            saved.y,
+            saved.z
+        )
+        console.log(pos)
+        level.setBlock(
+            pos,
+            saved.state,
+            3
+        )
+    }
+
+    // Then restore block entities
+    for (let saved of snapshot.blocks) {
+        if (saved.nbt === null) {
+            continue
+        }
+
+        let pos = new BlockPos(
+            saved.x,
+            saved.y,
+            saved.z
+        )
+
+        let blockEntity = level.getBlockEntity(pos)
+
+        if (blockEntity) {
+            blockEntity.loadWithComponents(saved.nbt, level.registryAccess())
+            blockEntity.setChanged()
+        }
+    }
+}
 
 
 
@@ -498,3 +596,4 @@ const fill_slot = (minecart, slot, item) => {
         
     }
 }
+

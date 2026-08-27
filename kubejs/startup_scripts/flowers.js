@@ -21,10 +21,12 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            itemstack.shrink(1)
+
 
             if (entity.player) {
+
                 global.aqua_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -49,11 +51,12 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            
+
 
             if (entity.player) {
-                itemstack.shrink(1)
+
                 global.purple_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -78,10 +81,11 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            itemstack.shrink(1)
 
             if (entity.player) {
+
                 global.orange_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -106,10 +110,12 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            itemstack.shrink(1)
+
 
             if (entity.player) {
+
                 global.green_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -134,38 +140,44 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            itemstack.shrink(1)
+
 
             if (entity.player) {
+
                 global.yellow_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
         })
 
+
     event.create("ice:blue_flower").maxStackSize(16)
         .useAnimation("bow")
-        .useDuration(itemstack => 64)
+        .useDuration((itemstack, player) => 72000)
         .use((level, player, hand) => {
             if (level.isClientSide()) {
                 return false
             }
-
+            player.persistentData.putFloat("blueFlowerCharge", 0.0)
+            level.server.runCommandSilent(`execute at ${String(player.uuid)} run summon block_display ~ ~ ~ {Tags:["blue_platform", "${player.uuid}"], Passengers:[{id:"minecraft:block_display",block_state:{Name:"minecraft:blue_concrete",Properties:{}},transformation:[3f,0f,0f,-1.5f,0f,1f,0f,0f,0f,0f,3f,-1.5f,0f,0f,0f,1f],glow_color_override:16777215,Glowing:1b,Tags:["blue_platform", "${player.uuid}"]}]}`)
+            
+            
             const nbt = player.nbt
             const origin =
                 nbt['neoforge:attachments']?.['neoorigins:origin_data']?.origins?.['neoorigins:origin']
             return origin === 'ice:flowery'
         })
 
-        .finishUsing((itemstack, level, entity) => {
+        .releaseUsing((itemstack, level, entity) => {
             if (level.isClientSide()) {
                 return itemstack
             }
 
-            itemstack.shrink(1)
 
             if (entity.player) {
                 global.blue_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -189,10 +201,11 @@ StartupEvents.registry('item', event => {
                 return itemstack
             }
 
-            itemstack.shrink(1)
 
             if (entity.player) {
+                entity.tell("First HI")
                 global.omega_flower(entity)
+                itemstack.shrink(1)
             }
 
             return itemstack
@@ -209,7 +222,7 @@ StartupEvents.registry('item', event => {
             }
 
             const ray = player.rayTrace(16)
-            if (ray.entity != null && ray.entity.isPlayer() ){
+            if (ray.entity != null && ray.entity.isPlayer()) {
                 return true
             }
             return false
@@ -228,7 +241,7 @@ StartupEvents.registry('item', event => {
 
             return itemstack
         })
-    
+
     event.create("ice:seth_book")
         .maxStackSize(1)
         .useAnimation("bow")
@@ -243,10 +256,10 @@ StartupEvents.registry('item', event => {
             }
 
             if (entity.player) {
-                if (global.seth_book(entity, itemstack)){
+                if (global.seth_book(entity, itemstack)) {
                     itemstack.shrink(1)
                 }
-                
+
             }
 
             return itemstack
