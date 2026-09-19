@@ -1,0 +1,33 @@
+{
+    "type": "neoorigins:action_on_hit",
+    "bientity_action": [
+        {
+            "type": "neoorigins:chance",
+            "chance": 0.1,
+            "action": {
+                "type": "neoorigins:target_action",
+                "action": {
+                    "type": "neoorigins:apply_effect",
+                    "effect": "minecraft:instant_damage",
+                    "amplifier": 200,
+                    "duration": 60
+                }
+            }
+        },
+        {
+            "type": "neoorigins:chance",
+            "chance": 0.01,
+            "action": {
+                "type": "neoorigins:actor_action",
+                "action": {
+                    "type": "neoorigins:apply_effect",
+                    "effect": "minecraft:instant_damage",
+                    "amplifier": 200,
+                    "duration": 60
+                }
+            }
+        }
+    ],
+    "name": "Roll the dice",
+    "description": "Every hit has a 10% chance to kill the target instantly and a 1% chance to kill you instantly"
+}

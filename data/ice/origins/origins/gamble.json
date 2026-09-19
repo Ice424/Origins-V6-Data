@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "ice:gamble/hit"
+  ],
+  "icon": {
+    "item": "minecraft:bundle"
+  },
+  "order": 0,
+  "impact": 1,
+  "name": "Gambling man"
+}

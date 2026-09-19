@@ -15,7 +15,6 @@ global.orange_flower = player => {
 global.green_flower = player => {
     const effects = player.potionEffects
     effects.add('minecraft:saturation', 10 * 60 * 20, 0, false, false)
-    player.tell("green")
 }
 global.yellow_flower = player => {
     player.tell("Secondary ability added")
